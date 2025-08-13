@@ -1,0 +1,14 @@
+{
+  "name": "control-price",
+  "version": "1.0.0",
+  "description": "Bot TVA/USDT en Uniswap para mantener precio",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "@uniswap/sdk": "^3.0.3",
+    "ethers": "^5.7.2",
+    "node-fetch": "^2.6.7"
+  }
+}
