@@ -18,7 +18,7 @@ jobs:
           node-version: '18'
 
       - name: Instalar dependencias
-        run: npm ci --verbose
+        run: npm install --verbose
 
       - name: Ejecutar bot
         env:
