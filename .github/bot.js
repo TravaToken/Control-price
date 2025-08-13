@@ -1,8 +1,8 @@
 require('dotenv').config();
 const { ethers } = require('ethers');
-const { abi: IUniswapV3PoolABI } = require('@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json');
-const { abi: SwapRouterABI } = require('@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json');
-const { abi: ERC20ABI } = require('@openzeppelin/contracts/build/contracts/ERC20.json');
+const IUniswapV3PoolABI = require('./abis/IUniswapV3Pool.json').abi;
+const SwapRouterABI = require('./abis/SwapRouter.json').abi;
+const ERC20ABI = require('./abis/ERC20.json').abi;
 
 // RPC Polygon
 const provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com');
