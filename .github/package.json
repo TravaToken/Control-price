@@ -1,16 +1,13 @@
 {
   "name": "control-price",
   "version": "1.0.0",
-  "description": "Bot TVA/USDT en Uniswap para mantener precio",
+  "description": "Bot TVA/USDT en Uniswap para mantener precio en Polygon",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.9.3",
     "@uniswap/sdk": "^3.0.3",
-    "@uniswap/v3-core": "^1.0.0",
-    "@uniswap/v3-periphery": "^1.0.0",
     "dotenv": "^16.3.1",
     "ethers": "^5.7.2",
     "node-fetch": "^2.6.7"
