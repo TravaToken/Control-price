@@ -1,27 +1,31 @@
-name: TVA Price Control Bot
+name: TVA Price Bot
 
 on:
   schedule:
-    - cron: "*/5 * * * *" # Ejecutar cada 5 minutos
-  workflow_dispatch: # Permite ejecución manual desde GitHub
+    - cron: "*/7 * * * *" # Ejecuta cada 7 minutos
+  workflow_dispatch: # Permite ejecución manual
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Clonar repositorio
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Instalar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: npm install
 
-      - name: Run bot
+      - name: Ejecutar bot
         env:
+          RPC_URL: ${{ secrets.RPC_URL }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          RPC_URL: https://polygon-rpc.com
+          WALLET_ADDRESS: ${{ secrets.WALLET_ADDRESS }}
+          TVA_TOKEN_ADDRESS: ${{ secrets.TVA_TOKEN_ADDRESS }}
+          USDT_TOKEN_ADDRESS: ${{ secrets.USDT_TOKEN_ADDRESS }}
+          UNISWAP_ROUTER_ADDRESS: ${{ secrets.UNISWAP_ROUTER_ADDRESS }}
         run: node bot.js
