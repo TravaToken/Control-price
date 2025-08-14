@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clonar repositorio
-      uses: actions/checkout@v3
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
 
-    - name: Configurar Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: "16"
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
 
-    - name: Instalar dependencias
-      run: npm install --no-audit --no-fund
-      working-directory: .
+      - name: Instalar dependencias
+        run: npm install --no-audit --no-fund
+        working-directory: .
 
-    - name: Ejecutar bot
-      run: node .github/bot.js
-      working-directory: .
+      - name: Ejecutar bot
+        run: node bot.js
+        working-directory: .
