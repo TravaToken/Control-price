@@ -2,8 +2,8 @@ name: Ejecutar Bot TVA
 
 on:
   schedule:
-    - cron: "0 * * * *" # Cada 60 minutos (en el minuto 0 de cada hora)
-  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub Actions
+    - cron: "0 * * * *" # Cada hora
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -19,9 +19,8 @@ jobs:
           node-version: 18
 
       - name: 📦 Instalar dependencias
-        working-directory: ./Control-price
+        working-directory: .
         run: npm install --no-audit --no-fund
 
       - name: 🚀 Ejecutar bot
-        working-directory: ./Control-price/.github
-        run: node bot.js
+        run: node .github/bot.js
