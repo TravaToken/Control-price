@@ -18,8 +18,10 @@ jobs:
       with:
         node-version: "16"
 
-    - name: Instalar dependencias
+    - - name: Instalar dependencias
       run: npm install --no-audit --no-fund
+      working-directory: .
+
 
     - name: Ejecutar bot
       run: npm start
