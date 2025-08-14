@@ -1,36 +1,27 @@
-# .github/workflows/bot.yml
-name: TVA Price Bot
+name: Ejecutar Bot TVA
 
 on:
   schedule:
-    - cron: "*/7 * * * *"
-  workflow_dispatch:
-
-concurrency:
-  group: tva-price-bot
-  cancel-in-progress: true
+    - cron: "0 * * * *" # Cada 60 minutos (en el minuto 0 de cada hora)
+  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub Actions
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: 🛠 Configurar Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 18
 
-      - name: Install deps
-        run: npm ci || npm install --no-audit --no-fund
+      - name: 📦 Instalar dependencias
+        working-directory: ./Control-price
+        run: npm install --no-audit --no-fund
 
-      - name: Run bot
-        env:
-          RPC_URL: ${{ secrets.RPC_URL }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          WALLET_ADDRESS: ${{ secrets.WALLET_ADDRESS }}
-          TVA_TOKEN_ADDRESS: "0x7324452980a5CeaD3EaDf1FA92c759390751cA13"
-          USDT_TOKEN_ADDRESS: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
-          UNISWAP_ROUTER_ADDRESS: "0xE592427A0AEce92De3Edee1F18E0157C05861564"
+      - name: 🚀 Ejecutar bot
+        working-directory: ./Control-price/.github
         run: node bot.js
