@@ -1,10 +1,13 @@
 {
-  "name": "control-price",
-  "version": "1.0.1",
+  "name": "control-price-bot",
+  "version": "1.0.0",
+  "description": "Bot para controlar precio TVA en Uniswap",
   "main": "bot.js",
-  "scripts": { "start": "node bot.js" },
+  "scripts": {
+    "start": "node bot.js"
+  },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "ethers": "^5.7.2"
+    "ethers": "^5.7.2",
+    "node-fetch": "^2.6.12"
   }
 }
